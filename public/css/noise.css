@@ -1,0 +1,162 @@
+/* Reset some default browser styles */
+body, h1, h2, p, ul, li {
+    margin: 0;
+    padding: 0;
+}
+
+/* Set base font and background */
+body {
+    font-family: Arial, sans-serif;
+    line-height: 1.6;
+    background-color: #f4f4f4;
+    color: #333;
+}
+
+header {
+    background: firebrick;
+    color: #fff;
+    padding: 1rem;
+    text-align: center;
+}
+
+header h1 {
+    margin-bottom: 0.5rem;
+}
+
+nav ul {
+    list-style: none;
+    padding: 0;
+}
+
+nav ul li {
+    display: inline;
+    margin-right: 15px;
+}
+
+nav ul li a {
+    color: #fff;
+    text-decoration: none;
+}
+
+nav ul li a:hover {
+    text-decoration: underline;
+}
+
+main {
+    padding: 1rem;
+}
+
+section {
+    margin-bottom: 1.5rem;
+    padding: 1rem;
+    background: #fff;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+h2 {
+    margin-bottom: 1rem;
+}
+
+.emoji {
+    font-size: 2rem; /* Enlarged emoji size */
+}
+
+img {
+    display: block;
+    width: 100%; /* Make images responsive */
+    max-width: 400px; /* Limit maximum width */
+    height: auto;
+    border-radius: 8px;
+}
+
+#sensor-images {
+    display: flex;
+    flex-wrap: nowrap; /* Prevent wrapping */
+    overflow-x: auto; /* Allow horizontal scrolling if needed */
+    gap: 1rem; /* Space between images */
+}
+
+.image-container {
+    flex: 1 1 300px; /* Allows images to grow/shrink but maintains a minimum width */
+    max-width: 300px; /* Limits the maximum width of each image container */
+    text-align: center; /* Center-align text under the image */
+}
+
+.image-info {
+    margin-top: 0.5rem;
+    font-size: 1rem; /* Adjust font size as needed */
+    color: #666; /* Light grey text color for contrast */
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+}
+
+label {
+    margin-bottom: 0.5rem;
+}
+
+input[type="text"],
+input[type="password"] {
+    padding: 0.5rem;
+    margin-bottom: 1rem;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+}
+
+button {
+    padding: 0.5rem;
+    border: none;
+    border-radius: 4px;
+    background: firebrick;
+    color: #fff;
+    cursor: pointer;
+}
+
+button:disabled {
+    background: #ccc;
+    cursor: not-allowed;
+}
+/* Sign In Section */
+#sign-in form {
+    max-width: 400px;
+    margin: 0 auto;
+}
+
+#sign-in label {
+    display: block;
+    margin: 10px 0 5px;
+}
+
+#sign-in input {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 10px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+}
+
+/* Notification Section */
+#notifications {
+    text-align: center;
+}
+
+#notifications button {
+    background: red;
+    font-size: 1rem;
+}
+
+#notifications button:hover {
+    background: red;
+}
+/* Footer Styles */
+footer {
+    background-color:firebrick;
+    color: white;
+    text-align: center;
+    padding: 1em 0;
+    width: 100%;
+    margin-top: auto;
+}

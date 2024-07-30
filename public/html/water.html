@@ -1,0 +1,561 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Water Shortages</title>
+    <link rel="stylesheet" href="../css/water.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <style>
+        /* Inline CSS to enlarge emojis */
+        #emojis span {
+            font-size: 2rem; /* Adjust size as needed */
+            margin: 0 10px;
+        }
+        /* Style adjustments for chart and image layout */
+        #status-chart {
+            max-width: 600px;
+            margin: 0 auto;
+        }
+        #sensor-images {
+            display: flex;
+            justify-content: space-between; /* Adjust spacing between images */
+            flex-wrap: nowrap; /* Ensure images stay in one line */
+            margin-top: 20px;
+        }
+        #sensor-images div {
+            flex: 1; /* Allow images to scale properly */
+            text-align: center;
+            margin: 0 10px; /* Space between images */
+        }
+        #sensor-images img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 8px;
+        }
+        #sensor-images p {
+            margin-top: 5px; /* Space between image and caption */
+        }
+        /* General Styles */
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+        }
+        header {
+            background: rgb(0, 119, 190);
+            color: #fff;
+            padding: 10px 0;
+            text-align: center;
+        }
+        header h1 {
+            margin: 0;
+            font-size: 2em;
+        }
+        nav ul {
+            list-style: none;
+            padding: 0;
+        }
+        nav ul li {
+            display: inline;
+            margin-right: 15px;
+        }
+        nav ul li a {
+            color: #fff;
+            text-decoration: none;
+            font-weight: bold;
+        }
+        nav ul li a:hover {
+            text-decoration: underline;
+        }
+        main {
+            padding: 20px;
+        }
+        section {
+            margin-bottom: 20px;
+            background: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        h2 {
+            margin-top: 0;
+        }
+        img {
+            max-width: 100%;
+            height: auto;
+            display: block;
+            margin: 0 auto;
+        }
+        button {
+            background: #007bff;
+            color: #fff;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+        button:disabled {
+            background: #ccc;
+            cursor: not-allowed;
+        }
+        button:hover:not(:disabled) {
+            background: #0056b3;
+        }
+        /* Sign In Section */
+        #sign-in {
+            max-width: 400px;
+            margin: 0 auto;
+            padding: 20px;
+            background: #fff;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        #sign-in h2 {
+            font-size: 1.8rem;
+            color: #2c3e50;
+            margin-top: 0;
+            margin-bottom: 20px;
+        }
+        #sign-in form {
+            display: flex;
+            flex-direction: column;
+        }
+        #sign-in label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: bold;
+        }
+        #sign-in input {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 15px;
+            border: 1px solid #bdc3c7;
+            border-radius: 4px;
+            font-size: 1rem;
+            color: #2c3e50;
+        }
+        #sign-in button {
+            padding: 12px;
+            border: none;
+            border-radius: 4px;
+            background: #2c3e50;
+            color: #fff;
+            cursor: pointer;
+            font-size: 1rem;
+            transition: background 0.3s ease;
+        }
+        #sign-in button:hover {
+            background: #34495e;
+        }
+        #sign-in button:disabled {
+            background: #ccc;
+            cursor: not-allowed;
+        }
+        /* Advanced Features Section */
+        #advanced-features {
+            display: none;
+            text-align: center;
+        }
+        #sensor-info p {
+            font-size: 1.2rem;
+            margin: 5px 0;
+        }
+        #sensor-images img {
+            margin: 10px;
+        }
+        /* Style adjustments for chart and image layout */
+        :root {
+            --primary-color: #007bff;
+            --secondary-color: #0056b3;
+            --background-color: #f4f4f4;
+        }
+        
+        body {
+            background-color: var(--background-color);
+        }
+        
+        button {
+            background: var(--primary-color);
+        }
+        
+        button:hover {
+            background: var(--secondary-color);
+        }
+        
+#status-chart {
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+#sensor-images {
+    display: flex;
+    justify-content: space-between; /* Adjust spacing between images */
+    flex-wrap: nowrap; /* Ensure images stay in one line */
+    margin-top: 20px;
+}
+
+#sensor-images div {
+    flex: 1; /* Allow images to scale properly */
+    text-align: center;
+    margin: 0 10px; /* Space between images */
+}
+
+#sensor-images img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 8px;
+}
+
+#sensor-images p {
+    margin-top: 5px; /* Space between image and caption */
+}
+
+/* Style adjustments for sensor information */
+#sensor-info {
+    display: flex;
+    justify-content: space-around; /* Space out the sensor details */
+    margin-top: 20px;
+}
+
+.sensor-details {
+    flex: 1;
+    text-align: center;
+    margin: 0 10px;
+    background: #fff;
+    padding: 10px;
+    border-radius: 8px;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+}
+
+.sensor-details h4 {
+    margin-top: 0;
+}
+
+        /* Notification Section */
+        #notifications {
+            text-align: center;
+        }
+        #notifications button {
+            background: red;
+            font-size: 1rem;
+        }
+        #notifications button:hover {
+            background: red;
+        }
+        /* Footer Styles */
+        footer {
+            background-color:rgb(0, 119, 190);
+            color: white;
+            text-align: center;
+            padding: 1em 0;
+            width: 100%;
+            margin-top: auto;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Water Shortages</h1>
+        <nav>
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="water.html">Water Shortages</a></li>
+                <li><a href="noise.html">Noise Pollution</a></li>
+                <li><a href="blackout.html">Power Blackouts</a></li>
+                <li><a href="waste.html">Waste Management</a></li>
+            </ul>
+        </nav>
+    </header>
+    <main>
+        <!-- Welcome Message Section -->
+        <section id="welcome-message">
+            <h2>Welcome to Water Shortage Monitor</h2>
+            <p>Sign in to view the current status of water availability in your area.</p>
+            <div id="emojis">
+                <span>💧</span>
+                <span>💦</span>
+                <span>🚱</span>
+            </div>
+        </section>
+
+        <!-- Sign In Section -->
+        <section id="sign-in">
+            <h2>Sign In</h2>
+            <form id="sign-in-form">
+                <label for="username">Username:</label>
+                <input type="text" id="username" name="username" aria-required="true">
+                
+                <label for="password">Password:</label>
+                <input type="password" id="password" name="password" required>
+                <button type="submit">Sign In</button>
+            </form>
+        </section>
+
+        <!-- Neighborhood Water Status Section -->
+        <section id="neighborhood-status" style="display: none;">
+            <h2>Neighborhood Water Status</h2>
+            <p id="status-message">Sign in to view the water status of your neighborhood.</p>
+            <canvas id="status-chart" width="600" height="300"></canvas> <!-- Increased height -->
+        </section>
+        
+        <!-- Latest Information on Water Shortages -->
+        <section id="latest-info">
+            <h2>Stay Updated with the Latest Information on Water Shortages in Kilimani</h2>
+            <p><strong>Status of Water Availability:</strong> Kilimani has been experiencing intermittent water supply disruptions due to increased demand and aging infrastructure. Recent reports indicate that water rationing might be in place in some areas.</p>
+            <p><strong>Causes of Shortages:</strong></p>
+            <ul>
+                <li><strong>Population Growth:</strong> Rapid urbanization and population growth in Kilimani have put a strain on existing water resources.</li>
+                <li><strong>Infrastructure Issues:</strong> Aging pipelines and treatment plants often lead to leaks and inefficiencies in water distribution.</li>
+                <li><strong>Climate Change:</strong> Changing weather patterns and prolonged dry spells have reduced water availability from natural sources.</li>
+            </ul>
+            <p><strong>Ongoing Solutions:</strong></p>
+            <ul>
+                <li><strong>Infrastructure Upgrades:</strong> The local government is investing in the repair and upgrading of water supply infrastructure to reduce leaks and improve efficiency.</li>
+                <li><strong>Water Conservation Campaigns:</strong> Initiatives are in place to promote water-saving practices among residents and businesses.</li>
+                <li><strong>Alternative Water Sources:</strong> Efforts are being made to explore and implement alternative water sources, such as rainwater harvesting and wastewater recycling.</li>
+            </ul>
+            <p><strong>Impact on Daily Lives:</strong></p>
+            <ul>
+                <li><strong>Residential Impact:</strong> Residents may face irregular water supply, leading to challenges in daily activities such as cooking, cleaning, and personal hygiene.</li>
+                <li><strong>Economic Impact:</strong> Businesses, particularly those relying heavily on water, may experience operational disruptions and increased costs.</li>
+                <li><strong>Health Concerns:</strong> Inadequate water supply can lead to increased risk of waterborne diseases and hinder proper sanitation.</li>
+            </ul>
+            <p><strong>Recent Developments:</strong></p>
+            <ul>
+                <li><strong>Community Meetings:</strong> Regular community meetings are being held to keep residents informed about the status of water supply and upcoming projects.</li>
+                <li><strong>Technology Integration:</strong> New technologies for water monitoring and management are being tested to improve the efficiency of water distribution and conservation efforts.</li>
+            </ul>
+        </section>
+
+   <!-- Advanced Features Section -->
+<section id="advanced-features">
+    <h2>Advanced Features</h2>
+    <p>Explore advanced features like real-time monitoring and data analytics to stay informed about water availability in your area.</p>
+    <div id="sensor-info">
+        <h3>Sensor Information:</h3>
+        <div class="sensor-details">
+            <h4>Thika Dam</h4>
+            <p>Water Level: 70%</p>
+            <p>Flow Rate: 1.5 liters/minute</p>
+            <p>Temperature: 25°C</p>
+        </div>
+        <div class="sensor-details">
+            <h4>Sasamua Dam</h4>
+            <p>Water Level: 55%</p>
+            <p>Flow Rate: 2.5 liters/minute</p>
+            <p>Temperature: 20°C</p>
+        </div>
+    </div>
+    <div id="sensor-images">
+        <div>
+            <img src="../images/thikadam.jpeg" alt="Thika Dam">
+            <p>Thika Dam</p>
+        </div>
+        <div>
+            <img src="../images/sasamua.jpeg" alt="Sasamua Dam">
+            <p>Sasamua Dam</p>
+        </div>
+    </div>
+</section>
+
+
+        <!-- Notifications Section -->
+        <section id="notifications">
+            <h2>Alert</h2>
+            <button id="notify-button">Alert Authorities</button>
+        </section>
+    </main>
+    <footer>
+        <p>&copy; 2024 Water Shortage Monitor. All rights reserved.</p>
+    </footer>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const signInForm = document.getElementById('sign-in-form');
+            const neighborhoodStatus = document.getElementById('neighborhood-status');
+            const advancedFeatures = document.getElementById('advanced-features');
+            const statusMessage = document.getElementById('status-message');
+            const statusChart = document.getElementById('status-chart').getContext('2d');
+            
+            signInForm.addEventListener('submit', function(event) {
+                event.preventDefault();
+                // Simulate successful sign-in
+                document.getElementById('welcome-message').style.display = 'none';
+                neighborhoodStatus.style.display = 'block';
+                advancedFeatures.style.display = 'block';
+                statusMessage.textContent = 'Loading neighborhood water status...';
+                
+                // Example data for the chart
+                const chart = new Chart(statusChart, {
+                    type: 'bar',
+                    data: {
+                        labels: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun'],
+                        datasets: [{
+                            label: 'Water Supply Level (%)',
+                            data: [90, 80, 85, 70, 65, 60],
+                            backgroundColor: 'rgba(75, 192, 192, 0.2)',
+                            borderColor: 'rgba(75, 192, 192, 1)',
+                            borderWidth: 1
+                        }]
+                    },
+                    options: {
+                        scales: {
+                            y: {
+                                beginAtZero: true
+                            }
+                        }
+                    }
+                });
+            });
+        });
+            document.addEventListener('DOMContentLoaded', function() {
+                const signInForm = document.getElementById('sign-in-form');
+                const neighborhoodStatus = document.getElementById('neighborhood-status');
+                const advancedFeatures = document.getElementById('advanced-features');
+                const latestInfo = document.getElementById('latest-info'); // Added this line
+                const statusMessage = document.getElementById('status-message');
+                const statusChart = document.getElementById('status-chart').getContext('2d');
+                
+                signInForm.addEventListener('submit', function(event) {
+                    event.preventDefault();
+                    // Simulate successful sign-in
+                    document.getElementById('welcome-message').style.display = 'none';
+                    neighborhoodStatus.style.display = 'block';
+                    advancedFeatures.style.display = 'block';
+                    latestInfo.style.display = 'none'; // Hide latest info section
+                    statusMessage.textContent = 'Loading neighborhood water status...';
+                    
+                    // Example data for the chart
+                    const chart = new Chart(statusChart, {
+                        type: 'bar',
+                        data: {
+                            labels: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun'],
+                            datasets: [{
+                                label: 'Water Supply Level (%)',
+                                data: [90, 80, 85, 70, 65, 60],
+                                backgroundColor: 'rgba(75, 192, 192, 0.2)',
+                                borderColor: 'rgba(75, 192, 192, 1)',
+                                borderWidth: 1
+                            }]
+                        },
+                        options: {
+                            scales: {
+                                y: {
+                                    beginAtZero: true
+                                }
+                            }
+                        }
+                    });
+                });
+            });
+            document.addEventListener('DOMContentLoaded', function() {
+                const signInForm = document.getElementById('sign-in-form');
+                const neighborhoodStatus = document.getElementById('neighborhood-status');
+                const advancedFeatures = document.getElementById('advanced-features');
+                const latestInfo = document.getElementById('latest-info');
+                const statusMessage = document.getElementById('status-message');
+                const statusChart = document.getElementById('status-chart').getContext('2d');
+                const notifyButton = document.getElementById('notify-button');
+                
+                signInForm.addEventListener('submit', function(event) {
+                    event.preventDefault();
+                    // Simulate successful sign-in
+                    document.getElementById('welcome-message').style.display = 'none';
+                    neighborhoodStatus.style.display = 'block';
+                    advancedFeatures.style.display = 'block';
+                    latestInfo.style.display = 'none'; // Hide latest info section
+                    statusMessage.textContent = 'Loading neighborhood water status...';
+                    
+                    // Example data for the chart
+                    const chart = new Chart(statusChart, {
+                        type: 'bar',
+                        data: {
+                            labels: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun'],
+                            datasets: [{
+                                label: 'Water Supply Level (%)',
+                                data: [90, 80, 85, 70, 65, 60],
+                                backgroundColor: 'rgba(75, 192, 192, 0.2)',
+                                borderColor: 'rgba(75, 192, 192, 1)',
+                                borderWidth: 1
+                            }]
+                        },
+                        options: {
+                            scales: {
+                                y: {
+                                    beginAtZero: true
+                                }
+                            }
+                        }
+                    });
+                });
+            
+                // Add click event listener for the button
+                notifyButton.addEventListener('click', function() {
+                    // Action when button is clicked
+                    alert('Alert authorities about the water shortage!');
+                    // You can replace the alert with other actions, like making an API call or redirecting to another page.
+                    // For example: window.location.href = 'contact.html'; or send an HTTP request.
+                });
+            });
+            document.addEventListener('DOMContentLoaded', function() {
+                const signInForm = document.getElementById('sign-in-form');
+                const neighborhoodStatus = document.getElementById('neighborhood-status');
+                const advancedFeatures = document.getElementById('advanced-features');
+                const latestInfo = document.getElementById('latest-info');
+                const statusMessage = document.getElementById('status-message');
+                const statusChart = document.getElementById('status-chart').getContext('2d');
+                const notifyButton = document.getElementById('notify-button');
+            
+                signInForm.addEventListener('submit', function(event) {
+                    event.preventDefault();
+                    document.getElementById('welcome-message').style.display = 'none';
+                    neighborhoodStatus.style.display = 'block';
+                    advancedFeatures.style.display = 'block';
+                    latestInfo.style.display = 'none';
+                    statusMessage.textContent = 'Loading neighborhood water status...';
+            
+                    const chart = new Chart(statusChart, {
+                        type: 'bar',
+                        data: {
+                            labels: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun'],
+                            datasets: [{
+                                label: 'Water Supply Level (%)',
+                                data: [90, 80, 85, 70, 65, 60],
+                                backgroundColor: 'rgba(75, 192, 192, 0.2)',
+                                borderColor: 'rgba(75, 192, 192, 1)',
+                                borderWidth: 1
+                            }]
+                        },
+                        options: {
+                            scales: {
+                                y: {
+                                    beginAtZero: true
+                                }
+                            }
+                        }
+                    });
+                });
+            
+                notifyButton.addEventListener('click', function() {
+                    alert('Alert authorities about the water shortage!');
+                });
+            });
+            signInForm.addEventListener('submit', function(event) {
+                event.preventDefault();
+                const username = document.getElementById('username').value;
+                const password = document.getElementById('password').value;
+            
+                if (!username || !password) {
+                    alert('Please fill out all fields.');
+                    return;
+                }
+            
+                // Simulate successful sign-in
+            });
+            
+    </script>
+</body>
+</html>

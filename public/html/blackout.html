@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Power Blackouts</title>
+    <link rel="stylesheet" href="../css/blackout.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+    <header>
+        <h1>Power Blackouts</h1>
+        <nav>
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="water.html">Water Shortages</a></li>
+                <li><a href="noise.html">Noise Pollution</a></li>
+                <li><a href="blackout.html">Power Blackouts</a></li>
+                <li><a href="waste.html">Waste Management</a></li>
+            </ul>
+        </nav>
+    </header>
+    <main>
+        <section>
+            <h2>Welcome to Power Blackouts Monitor</h2>
+            <p>Sign in to view real-time information and status about power blackouts in your area.</p>
+            <p class="emoji">💡🔋🌟</p>
+        </section>
+
+       
+        <!-- Sign In Section -->
+        <section id="sign-in">
+            <h2>Sign In</h2>
+            <form id="sign-in-form">
+                <label for="username">Username:</label>
+                <input type="text" id="username" name="username" required>
+                <label for="password">Password:</label>
+                <input type="password" id="password" name="password" required>
+                <button type="submit">Sign In</button>
+            </form>
+        </section>
+
+        <!-- Power Blackouts Status Section -->
+        <section id="power-status" style="display: none;">
+            <h2>Power Blackouts Status</h2>
+            <p id="status-message">Sign in to view the power blackout status of your neighborhood.</p>
+            <canvas id="status-chart" width="300" height="100"></canvas>
+        </section>
+        
+        <!-- Advanced Features Section -->
+        <section id="advanced-features" style="display: none;">
+            <h2>Advanced Power Blackouts Features</h2>
+            <p>This system monitors power outages, estimates the impact, and provides real-time updates.</p>
+            <div id="sensor-info">
+                <!-- Placeholder for sensor data -->
+                <p>Loading sensor data...</p>
+            </div>
+            <div id="sensor-images">
+                <div class="image-container">
+                    <img id="power-outage" src="../images/poweroff.jpeg" alt="Power Outage">
+                    <p class="image-info">Blackout: Duration and Affected Areas</p>
+                </div>
+                <div class="image-container">
+                    <img id="impact-assessment" src="../images/impact.jpeg" alt="Impact Assessment">
+                    <p class="image-info">Impact: Severity of the Blackout</p>
+                </div>
+                <div class="image-container">
+                    <img id="area-status" src="../images/recovery.jpeg" alt="Area Status">
+                    <p class="image-info">Recovery: Status and Progress</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Notification Section -->
+        <section id="notifications" style="display: none;">
+            <h2>Send Notification</h2>
+            <button id="send-notification" disabled>Notify Authorities</button>
+        </section>
+    </main>
+    <footer>
+        <p>&copy; 2024 KiliSmart. All rights reserved.</p>
+    </footer>
+    
+    <script>
+        document.getElementById('sign-in-form').addEventListener('submit', function(event) {
+            event.preventDefault();
+            const username = document.getElementById('username').value;
+            const password = document.getElementById('password').value;
+
+            // Simulate sign-in process
+            if (username === 'Kirichwa' && password === '12345678') {
+                document.getElementById('status-message').textContent = 'Your neighborhood power blackout status. Action needed soon.';
+                document.getElementById('send-notification').disabled = false;
+                document.getElementById('power-status').style.display = 'block';
+                document.getElementById('notifications').style.display = 'block';
+                document.getElementById('advanced-features').style.display = 'block';
+                loadSensorData();
+                renderChart();
+                displayImages();
+            } else {
+                alert('Invalid credentials. Please try again.');
+            }
+        });
+
+        document.getElementById('send-notification').addEventListener('click', function() {
+            alert('Notification sent to the authorities.');
+        });
+
+        function loadSensorData() {
+            const sensorData = {
+                blackoutDuration: '3 hours',
+                impactLevel: 'Severe',
+                recoveryStatus: 'In Progress'
+            };
+
+            const sensorInfoDiv = document.getElementById('sensor-info');
+            sensorInfoDiv.innerHTML = `
+                <p>Blackout duration: ${sensorData.blackoutDuration}</p>
+                <p>Impact level: ${sensorData.impactLevel}</p>
+                <p>Recovery status: ${sensorData.recoveryStatus}</p>
+            `;
+        }
+
+        function renderChart() {
+            const ctx = document.getElementById('status-chart').getContext('2d');
+            const data = {
+                labels: ['Blackout Duration', 'Impact Level', 'Recovery Status'],
+                datasets: [{
+                    label: 'Power Blackout Status',
+                    data: [3, 50, 30], // Updated dummy data
+                    backgroundColor: ['rgba(255, 99, 132, 0.2)', 'rgba(54, 162, 235, 0.2)', 'rgba(75, 192, 192, 0.2)'],
+                    borderColor: ['rgba(255, 99, 132, 1)', 'rgba(54, 162, 235, 1)', 'rgba(75, 192, 192, 1)'],
+                    borderWidth: 1
+                }]
+            };
+
+            new Chart(ctx, {
+                type: 'bar',
+                data: data,
+                options: {
+                    scales: {
+                        y: {
+                            beginAtZero: true
+                        }
+                    }
+                }
+            });
+        }
+
+        function displayImages() {
+            document.getElementById('power-outage').style.display = 'block';
+            document.getElementById('impact-assessment').style.display = 'block';
+            document.getElementById('area-status').style.display = 'block';
+        }
+    </script>
+</body>
+</html>

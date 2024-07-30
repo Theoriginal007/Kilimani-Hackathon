@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Waste Management</title>
+    <link rel="stylesheet" href="../css/waste.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <style>
+        /* Inline CSS to enlarge emojis */
+        #emojis span {
+            font-size: 2rem; /* Adjust size as needed */
+            margin: 0 10px;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Waste Management</h1>
+        <nav>
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="water.html">Water Shortages</a></li>
+                <li><a href="noise.html">Noise Pollution</a></li>
+                <li><a href="blackout.html">Power Blackouts</a></li>
+                <li><a href="waste.html">Waste Management</a></li>
+            </ul>
+        </nav>
+        
+    </header>
+    <main>
+        <!-- Welcome Message Section -->
+        <section id="welcome-message">
+            <h2>Welcome to Your Neighborhood Waste Watcher</h2>
+            <p>Sign in to see the current status of waste management in your area.</p>
+            <div id="emojis">
+                <span>😊</span>
+                <span>😐</span>
+                <span>😢</span>
+            </div>
+        </section>
+
+        <!-- Sign In Section -->
+        <section id="sign-in">
+            <h2>Sign In</h2>
+            <form id="sign-in-form">
+                <label for="username">Username:</label>
+                <input type="text" id="username" name="username" required>
+                <label for="password">Password:</label>
+                <input type="password" id="password" name="password" required>
+                <button type="submit">Sign In</button>
+            </form>
+        </section>
+
+        <!-- Neighborhood Waste Status Section -->
+        <section id="neighborhood-status" style="display: none;">
+            <h2>Neighborhood Waste Status</h2>
+            <p id="status-message">Sign in to view the waste status of your neighborhood.</p>
+            <canvas id="status-chart" width="400" height="200"></canvas>
+        </section>
+        
+        <!-- Advanced Features Section -->
+        <section id="advanced-features" style="display: none;">
+            <h2>Advanced Waste Management Features</h2>
+            <p>This system uses smart sensors to detect when garbage bins are full, detect foul smells, and employ computer vision to monitor environmental cleanliness.</p>
+            <div id="sensor-info">
+                <!-- Placeholder for sensor data -->
+                <p>Loading sensor data...</p>
+            </div>
+            <div id="sensor-images">
+                <img id="garbage-full" src="../images/smartbin.jpeg" alt="Garbage Full" style="display: none;">
+                <img id="environment-dirty" src="../images/dirtyenv.jpeg" alt="Dirty Environment" style="display: none;">
+                <img id="air-quality" src="../images/air.jpeg" alt="Air Quality" style="display: none;">
+            </div>
+        </section>
+
+        <!-- Notification Section -->
+        <section id="notifications" style="display: none;">
+            <h2>Send Notification</h2>
+            <button id="send-notification" disabled>Notify Authorities</button>
+        </section>
+    </main>
+    <footer>
+        <p>&copy; 2024 KiliSmart. All rights reserved.</p>
+    </footer>
+    
+    <script>
+        document.getElementById('sign-in-form').addEventListener('submit', function(event) {
+            event.preventDefault();
+            const username = document.getElementById('username').value;
+            const password = document.getElementById('password').value;
+
+            // Simulate sign-in process
+            if (username === 'Kirichwa' && password === '12345678') {
+                document.getElementById('status-message').textContent = 'Your neighborhood waste status. Action needed soon.';
+                document.getElementById('send-notification').disabled = false;
+                document.getElementById('neighborhood-status').style.display = 'block';
+                document.getElementById('notifications').style.display = 'block';
+                document.getElementById('advanced-features').style.display = 'block';
+                loadSensorData();
+                renderChart();
+                displayImages();
+            } else {
+                alert('Invalid credentials. Please try again.');
+            }
+        });
+
+        document.getElementById('send-notification').addEventListener('click', function() {
+            alert('Notification sent to the authorities.');
+        });
+
+        function loadSensorData() {
+            const sensorData = {
+                garbageBinFullness: '75%',
+                foulSmellDetected: 'Yes',
+                environmentalCleanliness: 'Poor'
+            };
+
+            const sensorInfoDiv = document.getElementById('sensor-info');
+            sensorInfoDiv.innerHTML = `
+                <p>Garbage bin fullness: ${sensorData.garbageBinFullness}</p>
+                <p>Foul smell detected: ${sensorData.foulSmellDetected}</p>
+                <p>Environmental cleanliness: ${sensorData.environmentalCleanliness}</p>
+            `;
+        }
+
+        function renderChart() {
+            const ctx = document.getElementById('status-chart').getContext('2d');
+            const data = {
+                labels: ['Garbage Bin Fullness', 'Foul Smell Detection', 'Environmental Cleanliness'],
+                datasets: [{
+                    label: 'Waste Status',
+                    data: [75, 60, 55],
+                    backgroundColor: ['rgba(255, 99, 132, 0.2)', 'rgba(54, 162, 235, 0.2)', 'rgba(75, 192, 192, 0.2)'],
+                    borderColor: ['rgba(255, 99, 132, 1)', 'rgba(54, 162, 235, 1)', 'rgba(75, 192, 192, 1)'],
+                    borderWidth: 1
+                }]
+            };
+
+            new Chart(ctx, {
+                type: 'bar',
+                data: data,
+                options: {
+                    scales: {
+                        y: {
+                            beginAtZero: true
+                        }
+                    }
+                }
+            });
+        }
+
+        function displayImages() {
+            document.getElementById('garbage-full').style.display = 'block';
+            document.getElementById('environment-dirty').style.display = 'block';
+            document.getElementById('air-quality').style.display = 'block';
+        }
+    </script>
+</body>
+</html>
