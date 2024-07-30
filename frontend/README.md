@@ -1,70 +1,83 @@
-# Getting Started with Create React App
+# React Waste and Power Monitoring Dashboard
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+## Description
 
-## Available Scripts
+This project is a React-based web application designed to monitor and visualize various metrics including waste levels, power blackouts, and noise levels. It provides real-time data through interactive charts and dashboards, making it easier to manage and analyze environmental and utility data.
 
-In the project directory, you can run:
+## Features
 
-### `npm start`
+- **Waste Monitoring**: Track and display waste levels.
+- **Power Blackout Monitoring**: Visualize power outages and interruptions.
+- **Noise Monitoring**: Measure and chart noise levels.
+- **Responsive Design**: Optimized for both desktop and mobile devices.
+- **Real-Time Data**: Updates data in real-time using WebSocket.
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+## Getting Started
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+To get a local copy up and running, follow these steps:
 
-### `npm test`
+### Prerequisites
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+- Node.js (v16.x or higher)
+- npm (v8.x or higher)
 
-### `npm run build`
+### Installation
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+1. Clone the repository:
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+git clone https://github.com/yourusername/your-repository.git
 
-### `npm run eject`
+## Navigate into the project directory:
+cd your-repository
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+## Install the required dependencies:
+npm install
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+## Running the Application
+To start the development server:
+npm start
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+The application will be available at http://localhost:3000.
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+## Building for Production
+To create a production build:
+npm run build
+The build will be placed in the dist directory.
 
-## Learn More
+## Running Tests
+To run the tests:
+npm test
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+## Environment Variables
+Create a .env file in the root directory and add the following environment variables:
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+REACT_APP_API_URL=your_api_url
+REACT_APP_SOCKET_URL=your_socket_url
 
-### Code Splitting
+## Deployment
+You can deploy the production build to any static site hosting service, such as Netlify, Vercel, or GitHub Pages.
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+## Technologies Used
+React: Frontend library for building user interfaces.
+Webpack: Module bundler.
+Chart.js: For visualizing data with charts.
+Socket.io: For real-time data updates.
+CSS: For styling the application.
 
-### Analyzing the Bundle Size
+## Contributing
+Contributions are welcome! Please fork the repository and submit a pull request with your changes.
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+Fork the repo.
+Create a new branch (git checkout -b feature-branch).
+Commit your changes (git commit -am 'Add new feature').
+Push to the branch (git push origin feature-branch).
+Create a new Pull Request.
 
-### Making a Progressive Web App
+## License
+This project is licensed under the MIT License - see the LICENSE file for details.
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+## Acknowledgements
+React Documentation
+Chart.js Documentation
+Socket.io Documentation

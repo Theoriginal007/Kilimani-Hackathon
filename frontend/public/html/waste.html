@@ -12,6 +12,17 @@
             font-size: 2rem; /* Adjust size as needed */
             margin: 0 10px;
         }
+
+        /* Ensure notification section is initially hidden */
+        #notifications {
+            display: none;
+        }
+
+        /* Increase size of the chart canvas */
+        #status-chart {
+            width: 600px;
+            height: 400px;
+        }
     </style>
 </head>
 <body>
@@ -26,7 +37,6 @@
                 <li><a href="waste.html">Waste Management</a></li>
             </ul>
         </nav>
-        
     </header>
     <main>
         <!-- Welcome Message Section -->
@@ -51,12 +61,20 @@
                 <button type="submit">Sign In</button>
             </form>
         </section>
+        
+        <!-- Waste News Section -->
+        <section id="waste-news">
+            <h2>Latest Waste Management News</h2>
+            <div id="news-content">
+                <!-- News articles will be dynamically inserted here -->
+            </div>
+        </section>
 
         <!-- Neighborhood Waste Status Section -->
         <section id="neighborhood-status" style="display: none;">
             <h2>Neighborhood Waste Status</h2>
             <p id="status-message">Sign in to view the waste status of your neighborhood.</p>
-            <canvas id="status-chart" width="400" height="200"></canvas>
+            <canvas id="status-chart"></canvas>
         </section>
         
         <!-- Advanced Features Section -->
@@ -66,11 +84,6 @@
             <div id="sensor-info">
                 <!-- Placeholder for sensor data -->
                 <p>Loading sensor data...</p>
-            </div>
-            <div id="sensor-images">
-                <img id="garbage-full" src="../images/smartbin.jpeg" alt="Garbage Full" style="display: none;">
-                <img id="environment-dirty" src="../images/dirtyenv.jpeg" alt="Dirty Environment" style="display: none;">
-                <img id="air-quality" src="../images/air.jpeg" alt="Air Quality" style="display: none;">
             </div>
         </section>
 
@@ -89,21 +102,27 @@
             event.preventDefault();
             const username = document.getElementById('username').value;
             const password = document.getElementById('password').value;
-
-            // Simulate sign-in process
+        
             if (username === 'Kirichwa' && password === '12345678') {
+                // Hide news section after successful sign-in
+                document.getElementById('waste-news').style.display = 'none';
+                
                 document.getElementById('status-message').textContent = 'Your neighborhood waste status. Action needed soon.';
                 document.getElementById('send-notification').disabled = false;
                 document.getElementById('neighborhood-status').style.display = 'block';
-                document.getElementById('notifications').style.display = 'block';
                 document.getElementById('advanced-features').style.display = 'block';
+                document.getElementById('notifications').style.display = 'block';
                 loadSensorData();
                 renderChart();
-                displayImages();
             } else {
                 alert('Invalid credentials. Please try again.');
             }
         });
+        
+        // Load news content when the page loads
+        window.onload = function() {
+            loadNews();
+        }
 
         document.getElementById('send-notification').addEventListener('click', function() {
             alert('Notification sent to the authorities.');
@@ -118,12 +137,37 @@
 
             const sensorInfoDiv = document.getElementById('sensor-info');
             sensorInfoDiv.innerHTML = `
-                <p>Garbage bin fullness: ${sensorData.garbageBinFullness}</p>
-                <p>Foul smell detected: ${sensorData.foulSmellDetected}</p>
-                <p>Environmental cleanliness: ${sensorData.environmentalCleanliness}</p>
+                <p>Garbage bin fullness: ${sensorData.garbageBinFullness} (Sensor located at main street bins)</p>
+                <p>Foul smell detected: ${sensorData.foulSmellDetected} (Sensor located at central park)</p>
+                <p>Environmental cleanliness: ${sensorData.environmentalCleanliness} (Sensor located at residential area)</p>
             `;
         }
-
+        
+        function loadNews() {
+            const newsContentDiv = document.getElementById('news-content');
+            // Example news data (replace with actual news source)
+            const newsArticles = [
+                {
+                    title: 'Waste Collection Improvements in Kilimani',
+                    date: '2024-07-30',
+                    content: 'The Kilimani area has seen significant improvements in waste collection services, with more frequent pickups and better waste segregation practices.'
+                },
+                {
+                    title: 'New Recycling Initiatives in Kilimani',
+                    date: '2024-07-28',
+                    content: 'Kilimani has introduced new recycling initiatives aimed at reducing landfill waste and promoting recycling among residents.'
+                }
+            ];
+        
+            newsContentDiv.innerHTML = newsArticles.map(article => `
+                <article>
+                    <h3>${article.title}</h3>
+                    <p><strong>Date:</strong> ${article.date}</p>
+                    <p>${article.content}</p>
+                </article>
+            `).join('');
+        }
+        
         function renderChart() {
             const ctx = document.getElementById('status-chart').getContext('2d');
             const data = {
@@ -148,12 +192,6 @@
                     }
                 }
             });
-        }
-
-        function displayImages() {
-            document.getElementById('garbage-full').style.display = 'block';
-            document.getElementById('environment-dirty').style.display = 'block';
-            document.getElementById('air-quality').style.display = 'block';
         }
     </script>
 </body>

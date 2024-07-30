@@ -27,7 +27,6 @@
             <p class="emoji">💡🔋🌟</p>
         </section>
 
-       
         <!-- Sign In Section -->
         <section id="sign-in">
             <h2>Sign In</h2>
@@ -40,41 +39,56 @@
             </form>
         </section>
 
-        <!-- Power Blackouts Status Section -->
-        <section id="power-status" style="display: none;">
-            <h2>Power Blackouts Status</h2>
-            <p id="status-message">Sign in to view the power blackout status of your neighborhood.</p>
-            <canvas id="status-chart" width="300" height="100"></canvas>
-        </section>
-        
-        <!-- Advanced Features Section -->
-        <section id="advanced-features" style="display: none;">
-            <h2>Advanced Power Blackouts Features</h2>
-            <p>This system monitors power outages, estimates the impact, and provides real-time updates.</p>
-            <div id="sensor-info">
-                <!-- Placeholder for sensor data -->
-                <p>Loading sensor data...</p>
-            </div>
-            <div id="sensor-images">
-                <div class="image-container">
-                    <img id="power-outage" src="../images/poweroff.jpeg" alt="Power Outage">
-                    <p class="image-info">Blackout: Duration and Affected Areas</p>
-                </div>
-                <div class="image-container">
-                    <img id="impact-assessment" src="../images/impact.jpeg" alt="Impact Assessment">
-                    <p class="image-info">Impact: Severity of the Blackout</p>
-                </div>
-                <div class="image-container">
-                    <img id="area-status" src="../images/recovery.jpeg" alt="Area Status">
-                    <p class="image-info">Recovery: Status and Progress</p>
-                </div>
-            </div>
-        </section>
+     <!-- Power Blackouts Status Section -->
+     <section id="power-status" style="display: none;">
+        <h2>Power Blackouts Status</h2>
+        <p id="status-message">Sign in to view the power blackout status of your neighborhood.</p>
+        <canvas id="status-chart" width="300" height="100"></canvas>
+    </section>
+
+    <!-- Advanced Features Section -->
+    <section id="advanced-features" style="display: none;">
+        <h2>Advanced Power Blackouts Features</h2>
+        <p>This system monitors power outages, estimates the impact, and provides real-time updates.</p>
+        <div id="sensor-info">
+            <!-- Placeholder for sensor data -->
+            <p>Loading sensor data...</p>
+        </div>
+    </section>
 
         <!-- Notification Section -->
         <section id="notifications" style="display: none;">
             <h2>Send Notification</h2>
             <button id="send-notification" disabled>Notify Authorities</button>
+        </section>
+        
+        <!-- News Section for Power Blackouts in Kilimani -->
+        <section id="news">
+            <h2>Latest Updates on Power Blackouts in Kilimani</h2>
+            
+            <h3>Current Situation</h3>
+            <p>Kilimani has been experiencing intermittent power blackouts over the past few weeks. The outages have been primarily caused by:</p>
+            <p><strong>Power Grid Overload:</strong> Increased demand during peak hours has strained the local power grid.</p>
+            <p><strong>Infrastructure Issues:</strong> Aging electrical infrastructure is prone to frequent failures and requires upgrades.</p>
+            <p><strong>Weather Conditions:</strong> Recent storms have damaged power lines, causing outages.</p>
+            
+            <h3>Recent Developments</h3>
+            <p>Recent measures have been implemented to address the situation:</p>
+            <p><strong>Infrastructure Upgrades:</strong> The local utility company has announced plans to upgrade power lines and substations to improve reliability.</p>
+            <p><strong>Emergency Response Teams:</strong> Teams are working around the clock to restore power and address infrastructure issues.</p>
+            <p><strong>Community Alerts:</strong> Residents are encouraged to sign up for SMS alerts to receive real-time updates on power outages and estimated restoration times.</p>
+            
+            <h3>Impact on Residents</h3>
+            <p>The power blackouts have had several impacts on Kilimani residents:</p>
+            <p><strong>Disrupted Daily Life:</strong> Frequent outages have affected household routines and businesses.</p>
+            <p><strong>Increased Costs:</strong> Many residents have incurred additional costs due to the need for backup power solutions.</p>
+            <p><strong>Health and Safety Concerns:</strong> Power outages have raised concerns about the safety of vulnerable populations and the reliability of medical equipment.</p>
+            
+            <h3>Future Plans</h3>
+            <p>Looking ahead, plans are in place to mitigate future power disruptions:</p>
+            <p><strong>Investment in Renewable Energy:</strong> Efforts are underway to integrate renewable energy sources to reduce dependency on the grid.</p>
+            <p><strong>Enhanced Grid Management:</strong> New technologies are being adopted to better manage power distribution and prevent outages.</p>
+            <p><strong>Community Engagement:</strong> Public forums are being held to keep residents informed and gather feedback on power management strategies.</p>
         </section>
     </main>
     <footer>
@@ -94,9 +108,15 @@
                 document.getElementById('power-status').style.display = 'block';
                 document.getElementById('notifications').style.display = 'block';
                 document.getElementById('advanced-features').style.display = 'block';
+
+                // Remove any news section if it exists
+                const newsSection = document.getElementById('news');
+                if (newsSection) {
+                    newsSection.style.display = 'none';
+                }
+
                 loadSensorData();
                 renderChart();
-                displayImages();
             } else {
                 alert('Invalid credentials. Please try again.');
             }
@@ -107,27 +127,39 @@
         });
 
         function loadSensorData() {
+            // Updated sensor data for power blackouts in different locations
             const sensorData = {
-                blackoutDuration: '3 hours',
-                impactLevel: 'Severe',
-                recoveryStatus: 'In Progress'
+                sensor1: 'Near Kilimani Mall on Yaya Centre Road.',
+                sensor2: 'Along Othaya Road near the Junction Mall.',
+                sensor3: 'At the entrance of Prestige Cinema Complex.',
+                sensor4: 'Near the new residential development on Lenana Road.',
+                sensor5: 'Close to the Kenyatta National Hospital entrance.',
+                blackoutDuration: '4 hours',
+                impactLevel: 'Moderate',
+                recoveryStatus: 'Ongoing'
             };
 
             const sensorInfoDiv = document.getElementById('sensor-info');
             sensorInfoDiv.innerHTML = `
-                <p>Blackout duration: ${sensorData.blackoutDuration}</p>
-                <p>Impact level: ${sensorData.impactLevel}</p>
-                <p>Recovery status: ${sensorData.recoveryStatus}</p>
+                <p><strong>Sensor 1:</strong> ${sensorData.sensor1}</p>
+                <p><strong>Sensor 2:</strong> ${sensorData.sensor2}</p>
+                <p><strong>Sensor 3:</strong> ${sensorData.sensor3}</p>
+                <p><strong>Sensor 4:</strong> ${sensorData.sensor4}</p>
+                <p><strong>Sensor 5:</strong> ${sensorData.sensor5}</p>
+                        <p style="margin-top: 20px;"><strong>Current Sensor Data:</strong></p>
+                <p><strong>Blackout Duration:</strong> ${sensorData.blackoutDuration}</p>
+                <p><strong>Impact Level:</strong> ${sensorData.impactLevel}</p>
+                <p><strong>Recovery Status:</strong> ${sensorData.recoveryStatus}</p>
             `;
         }
 
         function renderChart() {
             const ctx = document.getElementById('status-chart').getContext('2d');
             const data = {
-                labels: ['Blackout Duration', 'Impact Level', 'Recovery Status'],
+                labels: ['Blackout Duration (hours)', 'Impact Level (%)', 'Recovery Status (%)'],
                 datasets: [{
                     label: 'Power Blackout Status',
-                    data: [3, 50, 30], // Updated dummy data
+                    data: [4, 50, 70], // Dummy data for the chart
                     backgroundColor: ['rgba(255, 99, 132, 0.2)', 'rgba(54, 162, 235, 0.2)', 'rgba(75, 192, 192, 0.2)'],
                     borderColor: ['rgba(255, 99, 132, 1)', 'rgba(54, 162, 235, 1)', 'rgba(75, 192, 192, 1)'],
                     borderWidth: 1
@@ -145,12 +177,6 @@
                     }
                 }
             });
-        }
-
-        function displayImages() {
-            document.getElementById('power-outage').style.display = 'block';
-            document.getElementById('impact-assessment').style.display = 'block';
-            document.getElementById('area-status').style.display = 'block';
         }
     </script>
 </body>

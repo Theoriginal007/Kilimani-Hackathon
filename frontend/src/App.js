@@ -1,19 +1,20 @@
 import React from 'react';
-import MapView from './components/MapView';
-import PublicParticipation from './components/PublicParticipation';
+import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
+import HomePage from './pages/HomePage';
+import DashboardPage from './pages/DashboardPage';
+import './styles/App.css';
 
-function App() {
-  const mockData = [
-    { lat: 51.505, lng: -0.09, description: 'Test Marker' }
-  ];
-
+const App = () => {
   return (
-    <div>
-      <h1>KiliSmart Application</h1>
-      <PublicParticipation />
-      <MapView data={mockData} />
-    </div>
+    <Router>
+      <div className="App">
+        <Routes>
+          <Route path="/" element={<HomePage />} />
+          <Route path="/dashboard" element={<DashboardPage />} />
+        </Routes>
+      </div>
+    </Router>
   );
-}
+};
 
 export default App;

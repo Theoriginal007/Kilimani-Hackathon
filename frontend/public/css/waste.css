@@ -8,7 +8,7 @@ body {
 }
 
 header {
-    background:  rgb(2, 84, 86);
+    background: #0c2946;
     color: #fff;
     padding: 10px 0;
     text-align: center;
@@ -63,7 +63,7 @@ img {
 }
 
 button {
-    background: #007bff;
+    background: #0c2946;
     color: #fff;
     border: none;
     padding: 10px 20px;
@@ -146,7 +146,7 @@ button:hover:not(:disabled) {
 }
 /* Footer Styles */
 footer {
-    background-color: rgb(2, 84, 86);
+    background-color: #0c2946;
     color: white;
     text-align: center;
     padding: 1em 0;
