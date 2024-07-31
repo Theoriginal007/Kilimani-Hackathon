@@ -2,6 +2,7 @@ import React from "react";
 // import { Link } from "react-router-dom";
 
 // components
+// import { Link } from "react-router-dom";
 
 import Navbar from "components/Navbars/AuthNavbar.js";
 import Footer from "components/Footers/Footer.js";
@@ -38,11 +39,12 @@ export default function Landing() {
                   </div> 
                 </div>
                 <div className="gap-2">
-                <button
+                <button 
                 className="bg-indigo-500 text-white active:bg-indigo-600 text-xs font-bold uppercase px-3 py-3 rounded outline-none focus:outline-none mr-1 mb-1 ease-linear transition-all duration-150"
                 type="button"
               >
-                Visit Portal
+               <a href="/admin/dashboard">Visit Portal</a>
+  {/* <Link to="/">Visit Portal</Link> */}
               </button>
               <button
                 className="bg-indigo-500 text-white active:bg-indigo-600 text-xs font-bold uppercase px-3 py-3 rounded outline-none focus:outline-none mr-1 mb-1 ease-linear transition-all duration-150"
@@ -483,9 +485,9 @@ export default function Landing() {
 </div>
 
         <div className=" block py-24 lg:pt-0 bg-blueGray-800 mt-64">
-          <div className="container mx-auto px-4 ">
-            <div className="flex flex-wrap justify-center lg:-mt-64 ">
-              <div className="w-full lg:w-6/12 px-4 ">
+          <div className="container mx-auto px-4" style={{marginTop: "400px"}}>
+            <div className="flex flex-wrap justify-center lg:-mt-64 mt-24">
+              <div className="w-full lg:w-6/12 px-4 mt-24 ">
                 <div className="relative flex flex-col  min-w-0 break-words w-full mb-6 shadow-lg rounded-lg bg-blueGray-200">
                   <div className="flex-auto p-5 lg:p-10 ">
                     <h4 className="text-2xl font-semibold">
