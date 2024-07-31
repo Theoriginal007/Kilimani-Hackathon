@@ -1,0 +1,12 @@
+# Allow all web crawlers to access everything
+User-agent: *
+Allow: /
+
+# Disallow crawlers from accessing the node_modules directory
+Disallow: /node_modules/
+
+# Disallow crawlers from accessing the backend core directory
+Disallow: /kili_smart/core/
+
+# Sitemap location (if you have a sitemap)
+# Sitemap: http://www.example.com/sitemap.xml

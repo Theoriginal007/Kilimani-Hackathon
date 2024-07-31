@@ -1,11 +1,19 @@
-# core/urls.py
 from django.urls import path
 from . import views
 
 urlpatterns = [
-    path('noise_pollution/', views.noise_pollution_status, name='noise_pollution_status'),
-    path('water_shortages/', views.water_shortages_status, name='water_shortages_status'),
-    path('waste_management/', views.waste_management_status, name='waste_management_status'),
-    path('power_blackouts/', views.power_blackouts_status, name='power_blackouts_status'),
-    path('neighborhood_info/', views.neighborhood_info, name='neighborhood_info'),
+    # Endpoint for Public Participation
+    path('public-participation/', views.PublicParticipationListCreate.as_view(), name='public-participation-list-create'),
+    
+    # Endpoint for Waste Monitor
+    path('waste-monitor/', views.WasteMonitorListCreate.as_view(), name='waste-monitor-list-create'),
+    
+    # Endpoint for Power Monitor
+    path('power-monitor/', views.PowerMonitorListCreate.as_view(), name='power-monitor-list-create'),
+    
+    # Endpoint for Noise Monitor
+    path('noise-monitor/', views.NoiseMonitorListCreate.as_view(), name='noise-monitor-list-create'),
+    
+    # Endpoint for Water Monitor
+    path('water-monitor/', views.WaterMonitorListCreate.as_view(), name='water-monitor-list-create'),
 ]

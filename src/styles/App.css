@@ -1,0 +1,104 @@
+/* src/styles/App.css */
+
+/* Global Styles */
+body {
+  font-family: 'Arial', sans-serif; /* Sets a clean, sans-serif font for readability */
+  margin: 0; /* Removes default margin */
+  padding: 0; /* Removes default padding */
+  background-color: #f4f4f4; /* Light gray background for a neutral look */
+  color: #333; /* Default text color for better readability */
+  line-height: 1.6; /* Increases line height for better readability */
+}
+
+/* Header Styles */
+header {
+  background-color: #333; /* Dark background color for the header */
+  color: #fff; /* White text color for contrast */
+  padding: 1rem; /* Adds padding around the content */
+  text-align: center; /* Centers the text horizontally */
+}
+
+/* Heading Styles */
+h1 {
+  margin: 0; /* Removes default margin */
+  font-size: 2rem; /* Increases font size for the main heading */
+}
+
+h2 {
+  border-bottom: 2px solid #333; /* Adds a solid border beneath the heading */
+  padding-bottom: 0.5rem; /* Adds space beneath the heading */
+  margin-top: 0; /* Removes default top margin */
+  font-size: 1.5rem; /* Increases font size for subheadings */
+}
+
+/* Section Styles */
+section {
+  margin: 2rem auto; /* Centers the section and adds vertical margin */
+  padding: 1rem; /* Adds padding inside the section */
+  max-width: 1200px; /* Restricts the maximum width for readability */
+  background-color: #fff; /* White background for sections */
+  border-radius: 8px; /* Rounds the corners of the section */
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1); /* Adds subtle shadow for depth */
+  position: relative; /* Allows positioning of child elements */
+}
+
+/* List Styles */
+ul {
+  list-style: none; /* Removes default list styling */
+  padding: 0; /* Removes default padding */
+  margin: 0; /* Removes default margin */
+}
+
+li {
+  margin: 0.5rem 0; /* Adds vertical margin between list items */
+  padding: 0.5rem; /* Adds padding inside list items */
+  background-color: #f9f9f9; /* Light background color for list items */
+  border-left: 3px solid #333; /* Adds a left border for visual separation */
+  border-radius: 4px; /* Rounds the corners of list items */
+}
+
+/* Footer Styles */
+footer {
+  background-color: #333; /* Dark background color for the footer */
+  color: #fff; /* White text color for contrast */
+  padding: 1rem; /* Adds padding around the content */
+  text-align: center; /* Centers the text horizontally */
+  position: relative; /* Allows positioning of child elements */
+  bottom: 0; /* Aligns footer to the bottom of the page */
+  width: 100%; /* Ensures the footer spans the full width of the viewport */
+  box-shadow: 0 -2px 4px rgba(0,0,0,0.1); /* Adds subtle shadow for depth */
+}
+
+/* Responsive Styles */
+@media (max-width: 768px) {
+  /* Styles for devices with a max width of 768px (tablets and mobile) */
+  
+  section {
+    margin: 1rem; /* Reduces margin for smaller screens */
+    padding: 0.5rem; /* Reduces padding inside the section */
+  }
+
+  h1 {
+    font-size: 1.5rem; /* Reduces font size for smaller screens */
+  }
+
+  h2 {
+    font-size: 1.25rem; /* Reduces font size for smaller screens */
+  }
+}
+
+@media (max-width: 480px) {
+  /* Styles for devices with a max width of 480px (mobile phones) */
+
+  header, footer {
+    padding: 0.5rem; /* Reduces padding for smaller screens */
+  }
+
+  h1 {
+    font-size: 1.25rem; /* Further reduces font size for smaller screens */
+  }
+
+  h2 {
+    font-size: 1rem; /* Further reduces font size for smaller screens */
+  }
+}

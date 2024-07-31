@@ -1,0 +1,18 @@
+{
+  "name": "KILISMART",
+  "short_name": "KILISMART",
+  "start_url": "/index.html",
+  "display": "standalone",
+  "background_color": "#ffffff",
+  "theme_color": "#000000",
+  "description": "KILISMART Web Application",
+  "icons": [
+    {
+      "src": "/images/favicon.ico",
+      "sizes": "48x48 72x72 96x96 128x128 256x256 512x512",
+      "type": "image/x-icon"
+    }
+  ],
+  "scope": "/",
+  "orientation": "any"
+}

@@ -1,23 +1,34 @@
-# See https://help.github.com/articles/ignoring-files/ for more about ignoring files.
+# Ignore Python compiled files and cache
+*.pyc
+*.pyo
+*.pyd
+__pycache__/
 
-# dependencies
-/node_modules
-/.pnp
-.pnp.js
+# Ignore SQLite database file
+db.sqlite3
 
-# testing
-/coverage
+# Ignore environment variables file
+.env
 
-# production
-/build
+# Ignore Node.js dependencies and logs
+node_modules/
+npm-debug.log
+yarn-error.log
+package-lock.json
 
-# misc
-.DS_Store
-.env.local
-.env.development.local
-.env.test.local
-.env.production.local
+# Ignore VSCode workspace settings
+.vscode/
 
-npm-debug.log*
-yarn-debug.log*
-yarn-error.log*
+# Ignore Webpack build outputs
+dist/
+build/
+
+# Ignore Django log and translation files
+*.log
+*.pot
+*.pyc
+__pycache__/
+
+# Ignore React build outputs and logs
+*.log
+build/
