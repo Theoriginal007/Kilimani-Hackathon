@@ -1,1 +1,16 @@
-node_modules
+# Dependency directories
+node_modules/
+.pnp
+.pnp.js
+
+# Optional eslint cache
+.eslintcache
+
+# Output of 'yarn build'
+/build
+
+# dotenv environment variables file
+.env
+
+# MacOS files
+.DS_Store

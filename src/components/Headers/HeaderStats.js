@@ -2,7 +2,7 @@ import React from "react";
 
 // components
 
-import CardStats from "components/Cards/CardStats.js";
+// import CardStats from "components/Cards/CardStats.js";
 
 export default function HeaderStats() {
   return (
@@ -12,7 +12,7 @@ export default function HeaderStats() {
         <div className="px-4 md:px-10 mx-auto w-full">
           <div>
             {/* Card stats */}
-            <div className="flex flex-wrap">
+            {/* <div className="flex flex-wrap">
               <div className="w-full lg:w-6/12 xl:w-3/12 px-4">
                 <CardStats
                   statSubtitle="Forums"
@@ -61,7 +61,7 @@ export default function HeaderStats() {
                   statIconColor="bg-lightBlue-500"
                 />
               </div>
-            </div>
+            </div> */}
           </div>
         </div>
       </div>

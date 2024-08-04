@@ -24,7 +24,7 @@ export default function Sidebar() {
             className="md:block text-left md:pb-2 text-blueGray-600 mr-0 inline-block whitespace-nowrap text-sm uppercase font-bold p-4 px-0"
             to="/"
           >
-            Kilimani Baraza
+            KiliSmart
           </Link>
           {/* User */}
           <ul className="md:hidden items-center flex flex-wrap list-none">
@@ -50,7 +50,7 @@ export default function Sidebar() {
                     className="md:block text-left md:pb-2 text-blueGray-600 mr-0 inline-block whitespace-nowrap text-sm uppercase font-bold p-4 px-0"
                     to="/"
                   >
-                   Kilimani Baraza
+                   KiliSmart
                   </Link>
                 </div>
                 <div className="w-6/12 flex justify-end">
@@ -129,26 +129,27 @@ export default function Sidebar() {
               </li>
 
               <li className="items-center">
-                <Link
-                  className={
-                    "text-xs uppercase py-3 font-bold block " +
-                    (window.location.href.indexOf("/admin/tables") !== -1
-                      ? "text-lightBlue-500 hover:text-lightBlue-600"
-                      : "text-blueGray-700 hover:text-blueGray-500")
-                  }
-                  to="/admin/tables"
-                >
-                  <i
-                    className={
-                      "fas fa-table mr-2 text-sm " +
-                      (window.location.href.indexOf("/admin/tables") !== -1
-                        ? "opacity-75"
-                        : "text-blueGray-300")
-                    }
-                  ></i>{" "}
-                  Polls
-                </Link>
-              </li>
+  <Link
+    className={
+      "text-xs uppercase py-3 font-bold block " +
+      (window.location.href.indexOf("/admin/tables") !== -1
+        ? "text-lightBlue-500 hover:text-lightBlue-600"
+        : "text-blueGray-700 hover:text-blueGray-500")
+    }
+    to="/admin/tables"
+  >
+    <i
+      className={
+        "fas fa-table mr-2 text-sm " +
+        (window.location.href.indexOf("/admin/tables") !== -1
+          ? "opacity-75"
+          : "text-blueGray-300")
+      }
+    ></i>{" "}
+    Education Hub
+  </Link>
+</li>
+
 
               <li className="items-center">
                 <Link
@@ -168,7 +169,7 @@ export default function Sidebar() {
                         : "text-blueGray-300")
                     }
                   ></i>{" "}
-                  Parcels 
+                  Area Overview
                 </Link>
               </li>
             </ul>
@@ -192,7 +193,7 @@ export default function Sidebar() {
             {/* Navigation */}
 
             <ul className="md:flex-col md:min-w-full flex flex-col list-none md:mb-4">
-              <li className="items-center">
+              {/* <li className="items-center">
                 <Link
                   className="text-blueGray-700 hover:text-blueGray-500 text-xs uppercase py-3 font-bold block"
                   to="/landing"
@@ -200,28 +201,37 @@ export default function Sidebar() {
                   <i className="fas fa-newspaper text-blueGray-400 mr-2 text-sm"></i>{" "}
                   Landing Page
                 </Link>
-              </li>
+              </li> */}
 
               
-              <li className="items-center">
+              {/* <li className="items-center">
                 <Link
                   className="text-blueGray-700 hover:text-blueGray-500 text-xs uppercase py-3 font-bold block"
-                  to="/profile"
+                  to="/admin/learn"
                 >
                   <i className="fas fa-user-circle text-blueGray-400 mr-2 text-sm"></i>{" "}
                   Learn
                 </Link>
-              </li>
+              </li> */}
+              {/* <li className="items-center">
+                <Link
+                  className="text-blueGray-700 hover:text-blueGray-500 text-xs uppercase py-3 font-bold block"
+                  to="/admin/notify"
+                >
+                  <i className="fas fa-clipboard-list text-blueGray-300 mr-2 text-sm"></i>{" "}
+                  Notifications
+                </Link>
+              </li> */}
               <li className="items-center">
                 <Link
                   className="text-blueGray-700 hover:text-blueGray-500 text-xs uppercase py-3 font-bold block"
-                  to="/auth/register"
+                  to="/admin/contribution"
                 >
                   <i className="fas fa-clipboard-list text-blueGray-300 mr-2 text-sm"></i>{" "}
                   Contribution
                 </Link>
               </li>
-              <li className="items-center">
+              {/* <li className="items-center">
                 <Link
                   className="text-blueGray-700 hover:text-blueGray-500 text-xs uppercase py-3 font-bold block"
                   to="/profile"
@@ -268,7 +278,7 @@ export default function Sidebar() {
                   Help Desk
                 </Link>
               </li>
-            </ul>
+            </ul> */}
             </ul>
           </div>
         </div>
