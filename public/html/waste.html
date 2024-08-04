@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Waste Management</title>
+    <link rel="stylesheet" href="../css/waste.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <style>
+        /* Inline CSS to enlarge emojis */
+        #emojis span {
+            font-size: 2rem; /* Adjust size as needed */
+            margin: 0 10px;
+        }
+
+        /* Ensure notification section is initially hidden */
+        #notifications {
+            display: none;
+        }
+
+        /* Increase size of the chart canvas */
+        #status-chart {
+            width: 600px;
+            height: 400px;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Waste Management</h1>
+        <nav>
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="water.html">Water Shortages</a></li>
+                <li><a href="noise.html">Noise Pollution</a></li>
+                <li><a href="blackout.html">Power Blackouts</a></li>
+                <li><a href="waste.html">Waste Management</a></li>
+            </ul>
+        </nav>
+    </header>
+    <main>
+        <!-- Welcome Message Section -->
+        <section id="welcome-message">
+            <h2>Welcome to Your Neighborhood Waste Watcher</h2>
+            <p>Sign in to see the current status of waste management in your area.</p>
+            <div id="emojis">
+                <span>😊</span>
+                <span>😐</span>
+                <span>😢</span>
+            </div>
+        </section>
+
+        <!-- Sign In Section -->
+        <section id="sign-in">
+            <h2>Sign In</h2>
+            <form id="sign-in-form">
+                <label for="username">Username:</label>
+                <input type="text" id="username" name="username" required>
+                <label for="password">Password:</label>
+                <input type="password" id="password" name="password" required>
+                <button type="submit">Sign In</button>
+            </form>
+        </section>
+        
+        <!-- Waste News Section -->
+        <section id="waste-news">
+            <h2>Latest Waste Management News</h2>
+            <div id="news-content">
+                <!-- News articles will be dynamically inserted here -->
+            </div>
+        </section>
+
+        <!-- Neighborhood Waste Status Section -->
+        <section id="neighborhood-status" style="display: none;">
+            <h2>Neighborhood Waste Status</h2>
+            <p id="status-message">Sign in to view the waste status of your neighborhood.</p>
+            <canvas id="status-chart"></canvas>
+        </section>
+        
+        <!-- Advanced Features Section -->
+        <section id="advanced-features" style="display: none;">
+            <h2>Advanced Waste Management Features</h2>
+            <p>This system uses smart sensors to detect when garbage bins are full, detect foul smells, and employ computer vision to monitor environmental cleanliness.</p>
+            <div id="sensor-info">
+                <!-- Placeholder for sensor data -->
+                <p>Loading sensor data...</p>
+            </div>
+        </section>
+
+        <!-- Notification Section -->
+        <section id="notifications" style="display: none;">
+            <h2>Send Notification</h2>
+            <button id="send-notification" disabled>Notify Authorities</button>
+        </section>
+    </main>
+    <footer>
+        <p>&copy; 2024 KiliSmart. All rights reserved.</p>
+    </footer>
+    
+    <script>
+        document.getElementById('sign-in-form').addEventListener('submit', function(event) {
+            event.preventDefault();
+            const username = document.getElementById('username').value;
+            const password = document.getElementById('password').value;
+        
+            if (username === 'Kirichwa' && password === '12345678') {
+                // Hide news section after successful sign-in
+                document.getElementById('waste-news').style.display = 'none';
+                
+                document.getElementById('status-message').textContent = 'Your neighborhood waste status. Action needed soon.';
+                document.getElementById('send-notification').disabled = false;
+                document.getElementById('neighborhood-status').style.display = 'block';
+                document.getElementById('advanced-features').style.display = 'block';
+                document.getElementById('notifications').style.display = 'block';
+                loadSensorData();
+                renderChart();
+            } else {
+                alert('Invalid credentials. Please try again.');
+            }
+        });
+        
+        // Load news content when the page loads
+        window.onload = function() {
+            loadNews();
+        }
+
+        document.getElementById('send-notification').addEventListener('click', function() {
+            alert('Notification sent to the authorities.');
+        });
+
+        function loadSensorData() {
+            const sensorData = {
+                garbageBinFullness: '75%',
+                foulSmellDetected: 'Yes',
+                environmentalCleanliness: 'Poor'
+            };
+
+            const sensorInfoDiv = document.getElementById('sensor-info');
+            sensorInfoDiv.innerHTML = `
+                <p>Garbage bin fullness: ${sensorData.garbageBinFullness} (Sensor located at main street bins)</p>
+                <p>Foul smell detected: ${sensorData.foulSmellDetected} (Sensor located at central park)</p>
+                <p>Environmental cleanliness: ${sensorData.environmentalCleanliness} (Sensor located at residential area)</p>
+            `;
+        }
+        
+        function loadNews() {
+            const newsContentDiv = document.getElementById('news-content');
+            // Example news data (replace with actual news source)
+            const newsArticles = [
+                {
+                    title: 'Waste Collection Improvements in Kilimani',
+                    date: '2024-07-30',
+                    content: 'The Kilimani area has seen significant improvements in waste collection services, with more frequent pickups and better waste segregation practices.'
+                },
+                {
+                    title: 'New Recycling Initiatives in Kilimani',
+                    date: '2024-07-28',
+                    content: 'Kilimani has introduced new recycling initiatives aimed at reducing landfill waste and promoting recycling among residents.'
+                }
+            ];
+        
+            newsContentDiv.innerHTML = newsArticles.map(article => `
+                <article>
+                    <h3>${article.title}</h3>
+                    <p><strong>Date:</strong> ${article.date}</p>
+                    <p>${article.content}</p>
+                </article>
+            `).join('');
+        }
+        
+        function renderChart() {
+            const ctx = document.getElementById('status-chart').getContext('2d');
+            const data = {
+                labels: ['Garbage Bin Fullness', 'Foul Smell Detection', 'Environmental Cleanliness'],
+                datasets: [{
+                    label: 'Waste Status',
+                    data: [75, 60, 55],
+                    backgroundColor: ['rgba(255, 99, 132, 0.2)', 'rgba(54, 162, 235, 0.2)', 'rgba(75, 192, 192, 0.2)'],
+                    borderColor: ['rgba(255, 99, 132, 1)', 'rgba(54, 162, 235, 1)', 'rgba(75, 192, 192, 1)'],
+                    borderWidth: 1
+                }]
+            };
+
+            new Chart(ctx, {
+                type: 'bar',
+                data: data,
+                options: {
+                    scales: {
+                        y: {
+                            beginAtZero: true
+                        }
+                    }
+                }
+            });
+        }
+    </script>
+</body>
+</html>

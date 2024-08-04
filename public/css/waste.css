@@ -1,0 +1,155 @@
+/* General Styles */
+body {
+    font-family: Arial, sans-serif;
+    line-height: 1.6;
+    margin: 0;
+    padding: 0;
+    background-color: #f4f4f4;
+}
+
+header {
+    background: #0c2946;
+    color: #fff;
+    padding: 10px 0;
+    text-align: center;
+}
+
+header h1 {
+    margin: 0;
+    font-size: 2em;
+}
+
+nav ul {
+    list-style: none;
+    padding: 0;
+}
+
+nav ul li {
+    display: inline;
+    margin-right: 15px;
+}
+
+nav ul li a {
+    color: #fff;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+nav ul li a:hover {
+    text-decoration: underline;
+}
+
+main {
+    padding: 20px;
+}
+
+section {
+    margin-bottom: 20px;
+    background: #fff;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+h2 {
+    margin-top: 0;
+}
+
+img {
+    max-width: 100%;
+    height: auto;
+    display: block;
+    margin: 0 auto;
+}
+
+button {
+    background: #0c2946;
+    color: #fff;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+}
+
+button:disabled {
+    background: #ccc;
+    cursor: not-allowed;
+}
+
+button:hover:not(:disabled) {
+    background: #0056b3;
+}
+
+/* Sign In Section */
+#sign-in form {
+    max-width: 400px;
+    margin: 0 auto;
+}
+
+#sign-in label {
+    display: block;
+    margin: 10px 0 5px;
+}
+
+#sign-in input {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 10px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+}
+
+/* Neighborhood Status Section */
+#neighborhood-status {
+    text-align: center;
+}
+
+#status-chart {
+    margin: 20px auto;
+}
+
+/* Advanced Features Section */
+#advanced-features {
+    text-align: center;
+}
+
+#sensor-info {
+    margin: 20px auto;
+}
+
+#sensor-images {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+#sensor-images img {
+    width: 30%;
+    margin: 10px;
+    border: 2px solid #ddd;
+    border-radius: 8px;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+}
+/* Notification Section */
+#notifications {
+    text-align: center;
+}
+
+#notifications button {
+    background: red;
+    font-size: 1rem;
+}
+
+#notifications button:hover {
+    background: red;
+}
+/* Footer Styles */
+footer {
+    background-color: #0c2946;
+    color: white;
+    text-align: center;
+    padding: 1em 0;
+    width: 100%;
+    margin-top: auto;
+}

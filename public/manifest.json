@@ -1,4 +1,5 @@
 {
+<<<<<<< HEAD
   "short_name": "Notus React",
   "name": "Notus React by Creative Tim",
   "icons": [
@@ -17,4 +18,22 @@
   "display": "standalone",
   "theme_color": "#000000",
   "background_color": "#ffffff"
+=======
+  "name": "KILISMART",
+  "short_name": "KILISMART",
+  "start_url": "/index.html",
+  "display": "standalone",
+  "background_color": "#ffffff",
+  "theme_color": "#000000",
+  "description": "KILISMART Web Application",
+  "icons": [
+    {
+      "src": "/images/favicon.ico",
+      "sizes": "48x48 72x72 96x96 128x128 256x256 512x512",
+      "type": "image/x-icon"
+    }
+  ],
+  "scope": "/",
+  "orientation": "any"
+>>>>>>> cf468cd40bdeab05fb264e4ce790f5a88545c8a6
 }

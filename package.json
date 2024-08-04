@@ -1,4 +1,5 @@
 {
+<<<<<<< HEAD
   "name": "notus-react",
   "version": "1.1.0",
   "description": "Notus React - A free Tailwind CSS and React UI Kit and Admin by Creative Tim.",
@@ -36,6 +37,42 @@
   },
   "eslintConfig": {
     "extends": "react-app"
+=======
+  "name": "kilismart",
+  "version": "1.0.0",
+  "description": "A web application for KiliSmart",
+  "main": "index.js",
+  "scripts": {
+    "start": "react-scripts start",
+    "build": "react-scripts build",
+    "test": "react-scripts test",
+    "eject": "react-scripts eject"
+  },
+  "dependencies": {
+  "@react-google-maps/api": "^2.19.3",
+    "axios": "^1.7.2",
+    "chart.js": "^3.9.1",
+    "leaflet": "^1.9.4",
+    "react": "^18.2.0",
+    "react-chartjs-2": "^4.3.1",
+    "react-dom": "^18.2.0",
+    "react-icons": "^4.12.0",
+    "react-leaflet": "^4.1.0",
+    "react-router-dom": "^6.8.0",
+    "react-scripts": "^5.0.1",
+    "web-vitals": "^4.2.2"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.25.2",
+    "@babel/preset-env": "^7.25.2",
+    "@babel/preset-react": "^7.24.7"
+  },
+  "eslintConfig": {
+    "extends": [
+      "react-app",
+      "react-app/jest"
+    ]
+>>>>>>> cf468cd40bdeab05fb264e4ce790f5a88545c8a6
   },
   "browserslist": {
     "production": [
@@ -49,10 +86,15 @@
       "last 1 safari version"
     ]
   },
+<<<<<<< HEAD
   "optionalDependencies": {
     "typescript": "4.2.3"
   },
   "devDependencies": {
     "@babel/plugin-proposal-private-property-in-object": "^7.21.11"
   }
+=======
+  "author": "Your Name",
+  "license": "MIT"
+>>>>>>> cf468cd40bdeab05fb264e4ce790f5a88545c8a6
 }

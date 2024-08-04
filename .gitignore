@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 # Dependency directories
 node_modules/
 .pnp
@@ -14,3 +15,39 @@ node_modules/
 
 # MacOS files
 .DS_Store
+=======
+# Ignore Python compiled files and cache
+*.pyc
+*.pyo
+*.pyd
+__pycache__/
+
+# Ignore SQLite database file
+db.sqlite3
+
+# Ignore environment variables file
+.env
+
+# Ignore Node.js dependencies and logs
+node_modules/
+npm-debug.log
+yarn-error.log
+package-lock.json
+
+# Ignore VSCode workspace settings
+.vscode/
+
+# Ignore Webpack build outputs
+dist/
+build/
+
+# Ignore Django log and translation files
+*.log
+*.pot
+*.pyc
+__pycache__/
+
+# Ignore React build outputs and logs
+*.log
+build/
+>>>>>>> cf468cd40bdeab05fb264e4ce790f5a88545c8a6

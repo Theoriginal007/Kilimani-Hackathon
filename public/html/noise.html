@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Noise Pollution</title>
+    <link rel="stylesheet" href="../css/noise.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+    <header>
+        <h1>Noise Pollution</h1>
+        <nav>
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="water.html">Water Shortages</a></li>
+                <li><a href="noise.html">Noise Pollution</a></li>
+                <li><a href="blackout.html">Power Blackouts</a></li>
+                <li><a href="waste.html">Waste Management</a></li>
+            </ul>
+        </nav>
+    </header>
+    <main>
+        <section>
+            <h2>Welcome to Noise Pollution Monitor</h2>
+            <p>Sign in to view real-time information and status about noise pollution in your area.</p>
+            <p class="emoji emoji-large">🔊📉🌆</p>
+        </section>
+
+        <!-- Sign In Section -->
+        <section id="sign-in">
+            <h2>Sign In</h2>
+            <form id="sign-in-form">
+                <label for="username">Username:</label>
+                <input type="text" id="username" name="username" required>
+                <label for="password">Password:</label>
+                <input type="password" id="password" name="password" required>
+                <button type="submit">Sign In</button>
+            </form>
+        </section>
+
+        <section id="stay-updated" style="text-align: left; margin: 0 auto;">
+
+        
+            <h3>Causes</h3>
+            <p>Noise pollution in Kilimani stems from several key factors:</p>
+            <p><strong>Rapid Development:</strong> The area's growth and the construction of high-rise buildings contribute to increased noise levels.</p>
+            <p><strong>Traffic Congestion:</strong> Heavy traffic, frequent honking, and a rise in the number of vehicles exacerbate noise issues.</p>
+            <p><strong>Construction Activities:</strong> Ongoing construction projects, including roadworks and new building developments, produce significant noise.</p>
+            <p><strong>Unregulated Businesses:</strong> Operations of establishments such as nightclubs, bars, and markets often do not comply with noise control regulations.</p>
+        
+            <h3>Ongoing Solutions</h3>
+            <p>To address noise pollution, several measures are being implemented:</p>
+            <p><strong>Stricter Noise Regulations:</strong> The local government is enforcing tighter noise control laws, such as designated quiet hours and decibel limits.</p>
+            <p><strong>Improved Traffic Management:</strong> Efforts include better traffic flow design, reduced speed limits, and noise-reducing road surfaces.</p>
+            <p><strong>Eco-Friendly Transportation:</strong> There is a push for increased use of public transport, bicycles, and electric vehicles to reduce noise from vehicles.</p>
+            <p><strong>Community Engagement:</strong> Residents are encouraged to participate in noise monitoring programs and report disturbances to authorities.</p>
+        
+            <h3>Impact on Daily Lives</h3>
+            <p>The excessive noise in Kilimani affects residents in various ways:</p>
+            <p><strong>Sleep Disturbances:</strong> Persistent noise disrupts sleep, leading to fatigue and adverse health effects.</p>
+            <p><strong>Increased Stress:</strong> Constant noise contributes to heightened stress and anxiety levels.</p>
+            <p><strong>Reduced Concentration:</strong> Noise pollution impairs concentration and productivity, affecting both work and academic performance.</p>
+            <p><strong>Health Implications:</strong> Long-term exposure to high noise levels can result in hearing loss, cardiovascular issues, and mental health problems.</p>
+        
+            <h3>Recent Developments</h3>
+            <p>Recent initiatives have made significant strides in addressing noise pollution:</p>
+            <p><strong>Community Initiatives:</strong> Local groups are actively monitoring noise levels and raising awareness about its impacts.</p>
+            <p><strong>Collaboration with Environmental Organizations:</strong> Partnerships with environmental groups are fostering innovative solutions and educational efforts.</p>
+            <p><strong>Advocacy for Quieter Urban Planning:</strong> There is a movement towards urban planning that incorporates noise reduction features, such as green spaces and sound barriers.</p>
+            <p><strong>Technology Integration:</strong> New technologies, including noise monitoring apps and smart sensors, are being employed to better track and manage noise levels.</p>
+        </section>
+        
+        <!-- Noise Pollution Status Section -->
+        <section id="noise-status" style="display: none;">
+            <h2>Noise Pollution Status</h2>
+            <p id="status-message">Sign in to view the noise pollution status of your area.</p>
+            <canvas id="status-chart" width="300" height="100"></canvas>
+        </section>
+        
+       <!-- Sensor Information Section -->
+<section id="sensor-info" style="display: none;">
+    <h2>Sensor Information</h2>
+    <p>Our sensors are strategically placed in key locations throughout Kilimani to monitor noise pollution. Here are the details:</p>
+    <div id="sensor-data">
+        <!-- Sensor details will be inserted here by JavaScript -->
+    </div>
+</section>
+
+
+        <!-- Notification Section -->
+        <section id="notifications" style="display: none;">
+            <h2>Send Notification</h2>
+            <button id="send-notification" disabled>Notify Authorities</button>
+        </section>
+    </main>
+    <footer>
+        <p>&copy; 2024 KiliSmart. All rights reserved.</p>
+    </footer>
+    
+    <script>
+        document.getElementById('sign-in-form').addEventListener('submit', function(event) {
+            event.preventDefault();
+            const username = document.getElementById('username').value;
+            const password = document.getElementById('password').value;
+        
+            // Simulate sign-in process
+            if (username === 'Kirichwa' && password === '12345678') {
+                document.getElementById('status-message').textContent = 'Your area noise pollution status. Action needed soon.';
+                document.getElementById('send-notification').disabled = false;
+                document.getElementById('noise-status').style.display = 'block';
+                document.getElementById('notifications').style.display = 'block';
+                document.getElementById('sensor-info').style.display = 'block';
+                document.getElementById('stay-updated').style.display = 'none'; // Hide stay updated section
+                loadSensorData();
+                renderChart();
+                displayImages();
+            } else {
+                alert('Invalid credentials. Please try again.');
+            }
+        });
+        
+        document.getElementById('send-notification').addEventListener('click', function() {
+            alert('Notification sent to the authorities.');
+        });
+        
+        function loadSensorData() {
+            // Detailed sensor data
+            const sensorData = `
+                <p><strong>Sensor A:</strong> Along Argwings Kodhek Road near an intersection with Kilimani Road.</p>
+                <p><strong>Sensor B:</strong> Near a popular nightclub Blacky'z Lounge.</p>
+                <p><strong>Sensor C:</strong> At a construction site on a developing residential block.</p>
+                <p><strong>Sensor D:</strong> In a residential area near a large apartment complex on Elgeyo Marakwet Road.</p>
+                <p><strong>Sensor E:</strong> In a park Central Park.</p>
+                <p><strong>Sensor F:</strong> Near Kilimani Primary School.</p>
+                <p style="margin-top: 20px;"><strong>Current Sensor Data:</strong></p>
+                <p>Noise level: 85 dB</p>
+                <p>Impact level: Moderate</p>
+                <p>Recovery status: Ongoing</p>
+            `;
+            
+            const sensorInfoDiv = document.getElementById('sensor-data');
+            sensorInfoDiv.innerHTML = sensorData;
+        }
+        
+        
+        function renderChart() {
+            const ctx = document.getElementById('status-chart').getContext('2d');
+            const data = {
+                labels: ['Noise Level', 'Impact Level', 'Recovery Status'],
+                datasets: [{
+                    label: 'Noise Pollution Status',
+                    data: [85, 60, 40], // Updated dummy data
+                    backgroundColor: ['rgba(255, 99, 132, 0.2)', 'rgba(54, 162, 235, 0.2)', 'rgba(75, 192, 192, 0.2)'],
+                    borderColor: ['rgba(255, 99, 132, 1)', 'rgba(54, 162, 235, 1)', 'rgba(75, 192, 192, 1)'],
+                    borderWidth: 1
+                }]
+            };
+        
+            new Chart(ctx, {
+                type: 'bar',
+                data: data,
+                options: {
+                    scales: {
+                        y: {
+                            beginAtZero: true
+                        }
+                    }
+                }
+            });
+        }
+        
+        function displayImages() {
+            document.getElementById('noise-level').style.display = 'block';
+            document.getElementById('impact-assessment').style.display = 'block';
+            document.getElementById('area-status').style.display = 'block';
+        }
+        
+    </script>
+</body>
+</html>

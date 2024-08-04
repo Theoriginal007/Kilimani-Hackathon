@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>KILISMART</title>
+    <link rel="stylesheet" href="../css/index.css">
+
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+    <header>
+        <h1>KILISMART</h1>
+        <nav>
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="water.html">Water Shortages</a></li>
+                <li><a href="noise.html">Noise Pollution</a></li>
+                <li><a href="blackout.html">Power Blackouts</a></li>
+                <li><a href="waste.html">Waste Management</a></li>
+            </ul>
+        </nav>
+    </header>
+    <main>
+        <section class="intro">
+            <h2>Welcome to KiliSmart!</h2>
+            <p>Your go-to source for information about your neighborhood in Kilimani. Stay informed about key issues affecting our community, including water shortages, noise pollution, waste management, and power blackouts.</p>
+        </section>
+        
+        <div class="box-container">
+            <section id="water-shortages">
+                <h2>Water Shortages in Kilimani</h2>
+                <img src="../images/water.jpeg" alt="Water Shortages">
+                <p>Stay updated with the latest information and developments on water shortages in Kilimani. Understand the causes, ongoing solutions, and how these shortages impact our daily lives.</p>
+            </section>
+        
+            <section id="noise-pollution">
+                <h2>Noise Pollution in Kilimani</h2>
+                <img src="../images/noise.jpeg" alt="Noise Pollution">
+                <p>Learn about the sources of noise pollution in Kilimani, its effects on our community, and the measures being taken to mitigate its impact. Stay informed on how to address noise issues in your area.</p>
+            </section>
+        
+            <section id="waste-management">
+                <h2>Waste Management in Kilimani</h2>
+                <img src="../images/waste.jpeg" alt="Waste Management">
+                <p>Explore the waste management practices in Kilimani and find out how you can contribute to a cleaner, more sustainable neighborhood. Discover local recycling programs and waste reduction initiatives.</p>
+            </section>
+        
+            <section id="power-blackouts">
+                <h2>Power Blackouts in Kilimani</h2>
+                <img src="../images/blackout.jpeg" alt="Power Blackouts">
+                <p>Get the latest updates on power blackouts affecting Kilimani and the efforts being made to restore power quickly. Stay informed about the causes of these blackouts and how they are being addressed by local authorities.</p>
+            </section>
+        </div>
+        
+
+        <section id="feedback">
+            <h2>Submit Complaint/Feedback</h2>
+            <form action="/submit_feedback" method="post">
+                <label for="name">Name:</label>
+                <input type="text" id="name" name="name" required>
+
+                <label for="email">Email:</label>
+                <input type="email" id="email" name="email" required>
+
+                <label for="feedback">Information:</label>
+                <textarea id="feedback" name="feedback" rows="4" required></textarea>
+
+                <button type="submit">Submit</button>
+            </form>
+        </section>
+    </main>
+    <footer>
+        <p>&copy; 2024 KiliSmart. All rights reserved.</p>
+    </footer>
+</body>
+</html>

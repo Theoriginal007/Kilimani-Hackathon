@@ -1,0 +1,98 @@
+/* src/styles/index.css */
+
+/* Universal Box Sizing and Reset */
+* {
+  box-sizing: border-box; /* Ensures padding and border are included in the element's total width and height */
+  margin: 0; /* Resets margin to avoid inconsistent spacing */
+  padding: 0; /* Resets padding to avoid inconsistent spacing */
+}
+
+/* Full Height for HTML and Body */
+html, body {
+  height: 100%; /* Ensures the body takes up the full height of the viewport */
+  font-size: 16px; /* Sets the base font size for better readability and scaling */
+  line-height: 1.5; /* Sets line height for readability */
+  color: #333; /* Sets default text color for better contrast */
+  font-family: 'Arial', sans-serif; /* Sets a clean and readable font */
+}
+
+/* Anchor Tag Styles */
+a {
+  color: #007bff; /* Primary color for links */
+  text-decoration: none; /* Removes underline from links for a cleaner look */
+  transition: color 0.3s ease, text-decoration 0.3s ease; /* Smooth transition for color and text-decoration changes */
+}
+
+a:hover, a:focus {
+  text-decoration: underline; /* Adds underline on hover or focus for better visibility and accessibility */
+  color: #0056b3; /* Changes color on hover for visual feedback */
+}
+
+/* Button Styles */
+button {
+  border: none; /* Removes default border */
+  background-color: #007bff; /* Primary color for buttons */
+  color: #fff; /* White text color for contrast */
+  padding: 0.5rem 1rem; /* Adds padding for better clickability */
+  border-radius: 4px; /* Rounds the corners of the button */
+  cursor: pointer; /* Changes cursor to pointer on hover to indicate clickable element */
+  font-size: 1rem; /* Sets font size for readability */
+  font-weight: bold; /* Makes button text bold for emphasis */
+  transition: background-color 0.3s ease, transform 0.2s ease; /* Smooth transition for background color and scaling effect */
+}
+
+button:hover, button:focus {
+  background-color: #0056b3; /* Changes background color on hover or focus for visual feedback */
+  transform: scale(1.05); /* Slightly enlarges the button on hover for a visual effect */
+}
+
+/* Button Disabled State */
+button:disabled {
+  background-color: #ccc; /* Light gray background for disabled state */
+  color: #666; /* Darker gray text color for disabled state */
+  cursor: not-allowed; /* Changes cursor to not-allowed to indicate non-clickable element */
+  opacity: 0.7; /* Reduces opacity for disabled state */
+}
+
+/* Form Elements */
+input, select, textarea {
+  font-family: inherit; /* Inherits font-family from parent */
+  font-size: 1rem; /* Ensures consistent font size */
+  padding: 0.5rem; /* Adds padding for better usability */
+  border: 1px solid #ccc; /* Adds a border to form elements */
+  border-radius: 4px; /* Rounds corners of form elements */
+  box-shadow: inset 0 1px 2px rgba(0,0,0,0.1); /* Adds subtle inner shadow for depth */
+  transition: border-color 0.3s ease, box-shadow 0.3s ease; /* Smooth transition for border color and shadow */
+}
+
+input:focus, select:focus, textarea:focus {
+  border-color: #007bff; /* Changes border color on focus for better visibility */
+  box-shadow: 0 0 0 0.2rem rgba(0,123,255,0.25); /* Adds outer shadow on focus for accessibility */
+  outline: none; /* Removes default outline to avoid double borders */
+}
+
+/* Responsive Layout */
+@media (max-width: 768px) {
+  /* Styles for devices with a max width of 768px (tablets and mobile) */
+  
+  html {
+    font-size: 14px; /* Reduces font size for smaller screens */
+  }
+
+  button {
+    padding: 0.4rem 0.8rem; /* Adjusts button padding for smaller screens */
+  }
+}
+
+@media (max-width: 480px) {
+  /* Styles for devices with a max width of 480px (mobile phones) */
+  
+  html {
+    font-size: 12px; /* Further reduces font size for very small screens */
+  }
+
+  button {
+    padding: 0.3rem 0.6rem; /* Further adjusts button padding for very small screens */
+    font-size: 0.9rem; /* Further reduces font size for buttons */
+  }
+}
