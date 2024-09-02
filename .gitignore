@@ -51,3 +51,6 @@ __pycache__/
 *.log
 build/
 >>>>>>> cf468cd40bdeab05fb264e4ce790f5a88545c8a6
+
+node_modules/
+*.pack
